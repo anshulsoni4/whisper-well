@@ -4,16 +4,12 @@ import { SettingsForm } from "@/components/settings-form";
 
 const Settings = () => {
   return (
-    <div className="min-h-screen pb-8">
+    <div className="min-h-screen">
       <Header />
-      <div className="container max-w-4xl pt-20 px-4">
-        <h1 className="text-3xl font-bold mb-6">Settings</h1>
-        
-        <div className="bg-card rounded-lg p-4 md:p-6 shadow-sm">
-          <h2 className="text-xl font-semibold mb-4">Appearance Settings</h2>
-          <SettingsForm />
-        </div>
-      </div>
+      <main className="container pt-16">
+        <h1 className="text-2xl font-bold mb-6 font-poppins text-center">Settings</h1>
+        <SettingsForm />
+      </main>
     </div>
   );
 };

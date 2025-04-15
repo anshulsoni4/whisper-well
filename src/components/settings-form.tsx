@@ -22,12 +22,12 @@ export function SettingsForm() {
       return;
     }
 
-    // In a real app, you'd securely store this
+    // For development only - in production, use environment variables
     localStorage.setItem("openai-api-key", apiKey);
     setIsSaved(true);
     toast({
       title: "API Key Saved",
-      description: "Your OpenAI API key has been saved.",
+      description: "Your OpenAI API key has been saved for this session.",
       variant: "default",
     });
 
@@ -38,14 +38,14 @@ export function SettingsForm() {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <Card className="p-6 space-y-6 glass">
+      <Card className="p-6 space-y-6">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Key className="h-5 w-5 text-primary" />
             <h2 className="text-xl font-bold">API Configuration</h2>
           </div>
           <p className="text-sm text-muted-foreground">
-            Enter your OpenAI API key to enable chat completions.
+            Enter your OpenAI API key for development. For production, add it to your Vercel environment variables.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export function SettingsForm() {
               </div>
               <Button 
                 onClick={saveApiKey} 
-                className="gap-2"
+                className="gap-2 cursor-pointer"
               >
                 <Save className="h-4 w-4" />
                 <span>Save</span>
@@ -84,8 +84,7 @@ export function SettingsForm() {
           <div className="flex items-center gap-2 rounded-md border border-amber-200 bg-amber-50 dark:bg-amber-950/50 dark:border-amber-900 p-3 text-sm">
             <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
             <p className="text-amber-800 dark:text-amber-300">
-              Your API key is stored locally and is never sent to our servers. It is only used to
-              communicate directly with OpenAI's API.
+              For security: In development, your key is stored in localStorage. For production, set VITE_OPENAI_API_KEY in Vercel's environment variables.
             </p>
           </div>
         </div>
